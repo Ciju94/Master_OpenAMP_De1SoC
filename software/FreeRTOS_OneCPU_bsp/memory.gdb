@@ -3,7 +3,7 @@
 # Machine generated for CPU 'nios_cpu_1' in SOPC Builder design 'arm_one_nios'
 # SOPC Builder design path: ../../arm_one_nios.sopcinfo
 #
-# Generated: Sat Aug 03 19:45:41 CEST 2019
+# Generated: Sun Aug 04 14:19:12 CEST 2019
 
 # DO NOT MODIFY THIS FILE
 #

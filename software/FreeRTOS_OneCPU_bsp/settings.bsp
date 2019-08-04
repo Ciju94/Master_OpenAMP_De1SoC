@@ -2,8 +2,8 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>Aug 3, 2019 7:45:39 PM</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1564854339681</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>Aug 4, 2019 2:19:11 PM</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1564921151058</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>D:\Master_rad\NiosII_project\software\FreeRTOS_OneCPU_bsp</BspGeneratedLocation>
         <BspSettingsFile>.\settings.bsp</BspSettingsFile>
         <SopcDesignFile>..\..\arm_one_nios.sopcinfo</SopcDesignFile>
