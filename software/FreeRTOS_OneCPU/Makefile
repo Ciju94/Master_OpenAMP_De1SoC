@@ -174,6 +174,15 @@ C_SRCS += metal/irq.c
 C_SRCS += metal/log.c
 C_SRCS += metal/shmem.c
 C_SRCS += metal/softirq.c
+C_SRCS += openAMP/lib/proxy/rpmsg_retarget.c
+C_SRCS += openAMP/lib/remoteproc/elf_loader.c
+C_SRCS += openAMP/lib/remoteproc/remoteproc.c
+C_SRCS += openAMP/lib/remoteproc/remoteproc_virtio.c
+C_SRCS += openAMP/lib/remoteproc/rsc_table_parser.c
+C_SRCS += openAMP/lib/rpmsg/rpmsg.c
+C_SRCS += openAMP/lib/rpmsg/rpmsg_virtio.c
+C_SRCS += openAMP/lib/virtio/virtio.c
+C_SRCS += openAMP/lib/virtio/virtqueue.c
 CXX_SRCS :=
 ASM_SRCS := Source/portable/GCC/NiosII/port_asm.S
 
@@ -218,6 +227,7 @@ APP_INCLUDE_DIRS += Source/portable/MemMang
 APP_INCLUDE_DIRS += ./
 APP_INCLUDE_DIRS += metal
 APP_INCLUDE_DIRS += metal/lib
+APP_INCLUDE_DIRS += openAMP
 APP_LIBRARY_DIRS :=
 APP_LIBRARY_NAMES :=
 
