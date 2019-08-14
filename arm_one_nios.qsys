@@ -156,6 +156,14 @@
          type = "String";
       }
    }
+   element to_master
+   {
+      datum _sortIndex
+      {
+         value = "8";
+         type = "int";
+      }
+   }
 }
 ]]></parameter>
  <parameter name="clockCrossingAdapter" value="HANDSHAKE" />
@@ -192,6 +200,11 @@
  <interface name="memory" internal="hps_0.memory" type="conduit" dir="end" />
  <interface name="reset" internal="clk_0.clk_in_reset" type="reset" dir="end" />
  <interface name="sdram" internal="sdram.wire" type="conduit" dir="end" />
+ <interface
+   name="to_master_external_connection"
+   internal="to_master.external_connection"
+   type="conduit"
+   dir="end" />
  <module name="clk_0" kind="clock_source" version="17.0" enabled="1">
   <parameter name="clockFrequency" value="50000000" />
   <parameter name="clockFrequencyKnown" value="true" />
@@ -310,7 +323,7 @@
   <parameter name="F2SCLK_WARMRST_Enable" value="false" />
   <parameter name="F2SDRAM_Type" value="" />
   <parameter name="F2SDRAM_Width" value="" />
-  <parameter name="F2SINTERRUPT_Enable" value="false" />
+  <parameter name="F2SINTERRUPT_Enable" value="true" />
   <parameter name="F2S_Width" value="0" />
   <parameter name="FIX_READ_LATENCY" value="8" />
   <parameter name="FORCED_NON_LDC_ADDR_CMD_MEM_CK_INVERT" value="false" />
@@ -557,7 +570,7 @@
   <parameter name="S2FINTERRUPT_DMA_Enable" value="false" />
   <parameter name="S2FINTERRUPT_EMAC_Enable" value="false" />
   <parameter name="S2FINTERRUPT_FPGAMANAGER_Enable" value="false" />
-  <parameter name="S2FINTERRUPT_GPIO_Enable" value="false" />
+  <parameter name="S2FINTERRUPT_GPIO_Enable" value="true" />
   <parameter name="S2FINTERRUPT_I2CEMAC_Enable" value="false" />
   <parameter name="S2FINTERRUPT_I2CPERIPHERAL_Enable" value="false" />
   <parameter name="S2FINTERRUPT_L4TIMER_Enable" value="false" />
@@ -785,7 +798,7 @@
   <parameter name="dataAddrWidth" value="25" />
   <parameter name="dataMasterHighPerformanceAddrWidth" value="1" />
   <parameter name="dataMasterHighPerformanceMapParam" value="" />
-  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='jtag_uart_0.avalon_jtag_slave' start='0x10' end='0x18' type='altera_avalon_jtag_uart.avalon_jtag_slave' /><slave name='timer_0.s1' start='0x20' end='0x40' type='altera_avalon_timer.s1' /><slave name='nios_cpu_1.debug_mem_slave' start='0x800' end='0x1000' type='altera_nios2_gen2.debug_mem_slave' /><slave name='mutex_0.s1' start='0x101000' end='0x101008' type='altera_avalon_mutex.s1' /><slave name='sdram.s1' start='0x1000000' end='0x2000000' type='altera_avalon_new_sdram_controller.s1' /></address-map>]]></parameter>
+  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='to_master.s1' start='0x0' end='0x10' type='altera_avalon_pio.s1' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x10' end='0x18' type='altera_avalon_jtag_uart.avalon_jtag_slave' /><slave name='timer_0.s1' start='0x20' end='0x40' type='altera_avalon_timer.s1' /><slave name='nios_cpu_1.debug_mem_slave' start='0x800' end='0x1000' type='altera_nios2_gen2.debug_mem_slave' /><slave name='mutex_0.s1' start='0x101000' end='0x101008' type='altera_avalon_mutex.s1' /><slave name='sdram.s1' start='0x1000000' end='0x2000000' type='altera_avalon_new_sdram_controller.s1' /></address-map>]]></parameter>
   <parameter name="data_master_high_performance_paddr_base" value="0" />
   <parameter name="data_master_high_performance_paddr_size" value="0" />
   <parameter name="data_master_paddr_base" value="0" />
@@ -831,7 +844,7 @@
   <parameter name="instruction_master_high_performance_paddr_size" value="0" />
   <parameter name="instruction_master_paddr_base" value="0" />
   <parameter name="instruction_master_paddr_size" value="0" />
-  <parameter name="internalIrqMaskSystemInfo" value="3" />
+  <parameter name="internalIrqMaskSystemInfo" value="7" />
   <parameter name="io_regionbase" value="0" />
   <parameter name="io_regionsize" value="0" />
   <parameter name="master_addr_map" value="false" />
@@ -984,6 +997,20 @@
   <parameter name="timeoutPulseOutput" value="false" />
   <parameter name="watchdogPulse" value="2" />
  </module>
+ <module name="to_master" kind="altera_avalon_pio" version="17.0" enabled="1">
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="false" />
+  <parameter name="clockRate" value="50000000" />
+  <parameter name="direction" value="Input" />
+  <parameter name="edgeType" value="RISING" />
+  <parameter name="generateIRQ" value="true" />
+  <parameter name="irqType" value="LEVEL" />
+  <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="false" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="1" />
+ </module>
  <connection
    kind="avalon"
    version="17.0"
@@ -1027,6 +1054,15 @@
    end="timer_0.s1">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x0020" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="17.0"
+   start="nios_cpu_1.data_master"
+   end="to_master.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1089,6 +1125,7 @@
  <connection kind="clock" version="17.0" start="clk_0.clk" end="led.clk" />
  <connection kind="clock" version="17.0" start="clk_0.clk" end="mutex_0.clk" />
  <connection kind="clock" version="17.0" start="clk_0.clk" end="timer_0.clk" />
+ <connection kind="clock" version="17.0" start="clk_0.clk" end="to_master.clk" />
  <connection
    kind="clock"
    version="17.0"
@@ -1099,6 +1136,20 @@
    version="17.0"
    start="clk_0.clk"
    end="hps_0.h2f_lw_axi_clock" />
+ <connection
+   kind="interrupt"
+   version="17.0"
+   start="hps_0.f2h_irq0"
+   end="to_master.irq">
+  <parameter name="irqNumber" value="0" />
+ </connection>
+ <connection
+   kind="interrupt"
+   version="17.0"
+   start="nios_cpu_1.irq"
+   end="hps_0.h2f_gpio0_interrupt">
+  <parameter name="irqNumber" value="2" />
+ </connection>
  <connection
    kind="interrupt"
    version="17.0"
@@ -1135,6 +1186,11 @@
    version="17.0"
    start="clk_0.clk_reset"
    end="timer_0.reset" />
+ <connection
+   kind="reset"
+   version="17.0"
+   start="clk_0.clk_reset"
+   end="to_master.reset" />
  <interconnectRequirement for="$system" name="qsys_mm.clockCrossingAdapter" value="HANDSHAKE" />
  <interconnectRequirement for="$system" name="qsys_mm.enableEccProtection" value="FALSE" />
  <interconnectRequirement for="$system" name="qsys_mm.insertDefaultSlave" value="FALSE" />

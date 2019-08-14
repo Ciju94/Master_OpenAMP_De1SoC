@@ -6,7 +6,7 @@
 
 #include <unistd.h>
 
-#include "../../metal-test.h"
+#include "../metal-test.h"
 #include <log.h>
 #include <sys.h>
 #include <mutex.h>

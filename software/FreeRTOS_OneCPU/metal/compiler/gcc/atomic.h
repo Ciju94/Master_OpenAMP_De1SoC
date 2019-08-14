@@ -40,15 +40,38 @@ typedef enum {
 	memory_order_seq_cst,
 } memory_order;
 
-#define __sync_val_compare_and_swap(ptr,oldval,newval) \
-	(oldval == *ptr) ? (*ptr=newval) : (*ptr)
+#define __sync_val_compare_and_swap(OBJ, EXPVAL, DESVAL)			\
+	({								\
+		typeof(OBJ) obj = (OBJ);				\
+		typeof(*obj) expval = (EXPVAL);				\
+		typeof(*obj) desval = (DESVAL);				\
+		if (expval == *obj)					\
+			*OBJ = desval;				\
+		expval;						\
+	})
+	//(oldval == *ptr) ? (*ptr=newval) : (*ptr)
 
-#define __sync_fetch_and_add(ptr,value) \
-	*ptr += value
+#define __sync_fetch_and_add(OBJ, VAL)				\
+	({								\
+		typeof(OBJ) obj = (OBJ);				\
+		typeof(*obj) expval = *obj;					\
+		typeof(*obj) val = (VAL);					\
+		if (1)					\
+			*OBJ = expval + val;		\
+		expval;						\
+	})
+	//*ptr += value
 
-#define __sync_lock_test_and_set(ptr,value) \
-	(*ptr = value, *ptr)
-	//{int tmp = *ptr, *ptr += value, tmp}
+#define __sync_lock_test_and_set(OBJ, VAL)			\
+	({								\
+		typeof(OBJ) obj = (OBJ);				\
+		typeof(*obj) expval = *obj;					\
+		typeof(*obj) val = (VAL);					\
+		if (1)					\
+			*OBJ = val;					\
+		expval;						\
+	})
+	//(*ptr = value, *ptr)
 
 #define atomic_flag_test_and_set(FLAG)					\
 	__sync_lock_test_and_set((FLAG), 1)

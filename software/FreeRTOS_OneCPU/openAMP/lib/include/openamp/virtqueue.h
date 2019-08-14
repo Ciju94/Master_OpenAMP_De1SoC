@@ -19,8 +19,8 @@ extern "C" {
 
 #include <lib/include/openamp/virtio_ring.h>
 
-#include <../../../../metal/alloc.h>
-#include <../../../../metal/metal_io.h>
+#include <alloc.h>
+#include <metal_io.h>
 
 /* Error Codes */
 #define VQ_ERROR_BASE                                 -3000

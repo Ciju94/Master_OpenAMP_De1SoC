@@ -12,9 +12,9 @@
 #ifndef REMOTEPROC_H
 #define REMOTEPROC_H
 
-#include <../../../../metal/metal_io.h>
-#include <../../../../metal/mutex.h>
-#include <../../../../metal/compiler/gcc/compiler.h>
+#include <metal_io.h>
+#include <mutex.h>
+#include <compiler/gcc/compiler.h>
 
 #if defined __cplusplus
 extern "C" {

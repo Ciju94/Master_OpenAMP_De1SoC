@@ -1,7 +1,7 @@
 #ifndef RPMSG_RETARGET_H
 #define RPMSG_RETARGET_H
 
-#include <../../../../metal/mutex.h>
+#include <mutex.h>
 
 #include <lib/include/openamp/open_amp.h>
 #include <stdint.h>

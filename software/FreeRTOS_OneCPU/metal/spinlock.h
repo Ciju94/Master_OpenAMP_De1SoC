@@ -15,6 +15,8 @@
 #include <atomic.h>
 #include <cpu.h>
 
+#include "../atomic_mutex.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -44,8 +46,18 @@ static inline void metal_spinlock_init(struct metal_spinlock *slock)
  */
 static inline void metal_spinlock_acquire(struct metal_spinlock *slock)
 {
-	while (atomic_flag_test_and_set(&slock->v)) {
+	atomic_flag val;
+
+	atomic_mutex_acquire();
+	val = atomic_flag_test_and_set(&slock->v);
+	atomic_mutex_release();
+
+	while (val) {
 		metal_cpu_yield();
+
+		atomic_mutex_acquire();
+		val = atomic_flag_test_and_set(&slock->v);
+		atomic_mutex_release();
 	}
 }
 

@@ -23,9 +23,9 @@
 #ifndef REMOTEPROC_LOADER_H_
 #define REMOTEPROC_LOADER_H_
 
-#include <../../../../metal/metal_io.h>
-#include <../../../../metal/metal_list.h>
-#include <../../../../metal/sys.h>
+#include <metal_io.h>
+#include <metal_list.h>
+#include <sys.h>
 
 #include <lib/include/openamp/remoteproc.h>
 

@@ -145,12 +145,15 @@ architecture main of arm_one_nios_main is
 			sdram_dq										: inout std_logic_vector(15 downto 0);
 			sdram_dqm									: out std_logic_vector(1 downto 0);
 			sdram_ras_n									: out std_logic;
-			sdram_we_n									: out std_logic
+			sdram_we_n									: out std_logic;
+			
+			to_master_external_connection_export : in std_logic
 		);
 	end component arm_one_nios;
 	
-signal HPS_H2F_RST	: std_logic;
-	
+signal HPS_H2F_RST				: std_logic;
+signal TO_MASTER_EXT_CON		: std_logic;
+
 begin
 
 	u0 : component arm_one_nios
@@ -225,7 +228,8 @@ begin
 			sdram_dq                        => SDRAM_DQ,
 			sdram_dqm                       => SDRAM_DQM,
 			sdram_ras_n                     => SDRAM_RAS_N,
-			sdram_we_n                      => SDRAM_WE_N
+			sdram_we_n                      => SDRAM_WE_N,
+			to_master_external_connection_export => TO_MASTER_EXT_CON
 		);
 		
 end main;

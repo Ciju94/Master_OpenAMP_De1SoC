@@ -9,7 +9,7 @@
 
 #include <lib/include/openamp/rpmsg.h>
 
-#include <../../../../metal/alloc.h>
+#include <alloc.h>
 
 #include "rpmsg_internal.h"
 

@@ -7,8 +7,8 @@
 
 #include <string.h>
 
-#include <../../../../metal/alloc.h>
-#include <../../../../metal/log.h>
+#include <alloc.h>
+#include <log.h>
 
 #include <lib/include/openamp/elf_loader.h>
 #include <lib/include/openamp/remoteproc.h>

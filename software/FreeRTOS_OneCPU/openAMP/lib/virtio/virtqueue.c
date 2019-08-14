@@ -10,9 +10,9 @@
 #include <lib/include/openamp/virtio.h>
 #include <lib/include/openamp/virtqueue.h>
 
-#include <../../../../metal/atomic.h>
-#include <../../../../metal/log.h>
-#include <../../../../metal/alloc.h>
+#include <atomic.h>
+#include <log.h>
+#include <alloc.h>
 
 /* Prototype for internal functions. */
 static void vq_ring_init(struct virtqueue *, void *, int);

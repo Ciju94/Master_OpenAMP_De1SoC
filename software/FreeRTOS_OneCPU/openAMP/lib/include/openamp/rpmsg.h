@@ -12,10 +12,10 @@
 #ifndef _RPMSG_H_
 #define _RPMSG_H_
 
-#include <../../../../metal/compiler/gcc/compiler.h>
-#include <../../../../metal/mutex.h>
-#include <../../../../metal/metal_list.h>
-#include <../../../../metal/utilities.h>
+#include <compiler/gcc/compiler.h>
+#include <mutex.h>
+#include <metal_list.h>
+#include <utilities.h>
 
 #include <string.h>
 #include <stdbool.h>

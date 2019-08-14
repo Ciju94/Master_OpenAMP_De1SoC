@@ -8,7 +8,8 @@
 #define _VIRTIO_H_
 
 #include <lib/include/openamp/virtqueue.h>
-#include <../../../../metal/spinlock.h>
+
+#include <spinlock.h>
 
 #if defined __cplusplus
 extern "C" {

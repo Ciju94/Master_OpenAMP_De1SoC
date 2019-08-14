@@ -12,6 +12,6 @@
 #ifndef __METAL_CPU__H__
 #define __METAL_CPU__H__
 
-# include <processor/nios2/cpu.h>
+#include <processor/nios2/cpu.h>
 
 #endif /* __METAL_CPU__H__ */

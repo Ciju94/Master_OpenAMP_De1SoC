@@ -16,6 +16,8 @@
 
 #include <string.h>
 
+#include "../atomic_mutex.h"
+
 #define METAL_SOFTIRQ_NUM 64
 
 #define METAL_SOFTIRQ_ARRAY_DECLARE(num) \
@@ -92,9 +94,16 @@ void metal_softirq_dispatch()
 		struct metal_irq *irq;
 		char is_pending = 1;
 
-		if (atomic_load(&metal_softirq_enabled[i]) != 0 &&
-		    atomic_compare_exchange_strong(&metal_softirq_pending[i],
-						   &is_pending, 0)) {
+		atomic_char val1;
+		atomic_char val2;
+
+		atomic_mutex_acquire();
+		val1 = atomic_load(&metal_softirq_enabled[i]);
+		val2 = atomic_compare_exchange_strong(&metal_softirq_pending[i],
+				   &is_pending, 0);
+		atomic_mutex_release();
+
+		if (val1 != 0 && val2) {
 			irq = &metal_softirqs[i];
 			(void)metal_irq_handle(irq,
 					       i + metal_softirq_cntr.irq_base);

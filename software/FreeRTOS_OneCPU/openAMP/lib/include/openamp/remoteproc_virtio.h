@@ -12,8 +12,8 @@
 #ifndef REMOTEPROC_VIRTIO_H
 #define REMOTEPROC_VIRTIO_H
 
-#include <../../../../metal/metal_io.h>
-#include <../../../../metal/metal_list.h>
+#include <metal_io.h>
+#include <metal_list.h>
 
 #include <lib/include/openamp/virtio.h>
 
@@ -21,7 +21,7 @@
 extern "C" {
 #endif
 
-/* define vdev notification funciton user should implement */
+/* define vdev notification function user should implement */
 typedef int (*rpvdev_notify_func)(void *priv, uint32_t id);
 
 /**

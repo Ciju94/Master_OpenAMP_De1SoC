@@ -6,7 +6,7 @@
  * SPDX-License-Identifier: BSD-3-Clause
  */
 
-#include <../../../../metal/metal_io.h>
+#include <metal_io.h>
 
 #include <lib/include/openamp/rsc_table_parser.h>
 

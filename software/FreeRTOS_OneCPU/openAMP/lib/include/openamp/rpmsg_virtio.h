@@ -12,8 +12,8 @@
 #ifndef _RPMSG_VIRTIO_H_
 #define _RPMSG_VIRTIO_H_
 
-#include <../../../../metal/metal_io.h>
-#include <../../../../metal/mutex.h>
+#include <metal_io.h>
+#include <mutex.h>
 
 #include <lib/include/openamp/rpmsg.h>
 #include <lib/include/openamp/virtio.h>

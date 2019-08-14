@@ -12,7 +12,8 @@ obj/default/metal/freertos/time.o: metal/freertos/time.c \
  Source/portable/MemMang/../../../Source/include/mpu_wrappers.h \
  Source/include/task.h Source/include/list.h metal/time.h metal/sys.h \
  metal/log.h metal/freertos/log.h metal/metal_list.h metal/freertos/sys.h \
- metal/freertos/nios2/sys.h
+ metal/freertos/nios2/sys.h metal/irq.h metal/freertos/irq.h \
+ metal/freertos/nios2/common/sys.h
 
 Source/portable/MemMang/../../../Source/include/FreeRTOS.h:
 
@@ -55,3 +56,9 @@ metal/metal_list.h:
 metal/freertos/sys.h:
 
 metal/freertos/nios2/sys.h:
+
+metal/irq.h:
+
+metal/freertos/irq.h:
+
+metal/freertos/nios2/common/sys.h:

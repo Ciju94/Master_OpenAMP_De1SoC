@@ -16,4 +16,8 @@
 #ifndef __METAL_FREERTOS_IRQ__H__
 #define __METAL_FREERTOS_IRQ__H__
 
+/* We need to find the internal MAX_IRQS limit */
+/* Could be retrieved from platform specific files in the future */
+#define METAL_INTERNAL		ALT_NIRQ
+
 #endif /* __METAL_FREERTOS_IRQ__H__ */

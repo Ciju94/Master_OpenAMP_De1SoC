@@ -13,9 +13,9 @@
 #include <lib/include/openamp/remoteproc_virtio.h>
 #include <lib/include/openamp/virtqueue.h>
 
-#include <../../../../metal/cpu.h>
-#include <../../../../metal/utilities.h>
-#include <../../../../metal/alloc.h>
+#include <cpu.h>
+#include <utilities.h>
+#include <alloc.h>
 
 static void rproc_virtio_virtqueue_notify(struct virtqueue *vq)
 {

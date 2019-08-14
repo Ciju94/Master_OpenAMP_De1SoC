@@ -1,8 +1,8 @@
 #include <errno.h>
 
-#include <../metal/mutex.h>
-#include <../metal/spinlock.h>
-#include <../metal/utilities.h>
+#include <mutex.h>
+#include <spinlock.h>
+#include <utilities.h>
 
 #include <lib/include/openamp/open_amp.h>
 #include <lib/include/openamp/rpmsg_retarget.h>
@@ -10,6 +10,8 @@
 #include <stdio.h>
 #include <string.h>
 #include <fcntl.h>
+
+#include "../../atomic_mutex.h"
 
 /*************************************************************************
  *	Description
@@ -126,16 +128,32 @@ int rpmsg_rpc_send(struct rpmsg_rpc_data *rpc,
 	rpc->respbuf = resp;
 	rpc->respbuf_len = resp_len;
 	metal_spinlock_release(&rpc->buflock);
+
+	atomic_mutex_acquire();
 	(void)atomic_flag_test_and_set(&rpc->nacked);
+	atomic_mutex_release();
+
 	ret = rpmsg_send(&rpc->ept, req, len);
 	if (ret < 0)
 		return -EINVAL;
 	if (!resp)
 		return ret;
-	while((atomic_flag_test_and_set(&rpc->nacked))) {
+
+	atomic_int val;
+
+	atomic_mutex_acquire();
+	val = atomic_flag_test_and_set(&rpc->nacked);
+	atomic_mutex_release();
+
+	while(val) {
 		if (rpc->poll)
 			rpc->poll(rpc->poll_arg);
+
+		atomic_mutex_acquire();
+		val = atomic_flag_test_and_set(&rpc->nacked);
+		atomic_mutex_release();
 	}
+
 	return ret;
 }
 

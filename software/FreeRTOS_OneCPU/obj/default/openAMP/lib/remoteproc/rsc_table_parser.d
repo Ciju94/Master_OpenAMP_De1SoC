@@ -1,20 +1,22 @@
 obj/default/openAMP/lib/remoteproc/rsc_table_parser.o: \
- openAMP/lib/remoteproc/rsc_table_parser.c \
- Source/portable/GCC/NiosII/../../../../metal/metal_io.h \
+ openAMP/lib/remoteproc/rsc_table_parser.c metal/metal_io.h \
  metal/metal_assert.h metal/freertos/assert.h \
  C:/intelFPGA_lite/17.0/nios2eds/bin/gnu/H-x86_64-mingw32/nios2-elf/include/assert.h \
  C:/intelFPGA_lite/17.0/nios2eds/bin/gnu/H-x86_64-mingw32/nios2-elf/include/_ansi.h \
  metal/compiler/gcc/compiler.h metal/atomic.h metal/compiler/gcc/atomic.h \
  metal/sys.h metal/log.h metal/freertos/log.h metal/metal_list.h \
- metal/freertos/sys.h metal/freertos/nios2/sys.h metal/cpu.h \
- metal/processor/nios2/cpu.h metal/freertos/io.h \
+ metal/freertos/sys.h metal/freertos/nios2/sys.h metal/irq.h \
+ metal/freertos/irq.h metal/freertos/nios2/common/sys.h \
+ ../FreeRTOS_OneCPU_bsp//HAL/inc/sys/alt_irq.h \
+ ../FreeRTOS_OneCPU_bsp//HAL/inc/nios2.h \
+ ../FreeRTOS_OneCPU_bsp//HAL/inc/alt_types.h \
+ ../FreeRTOS_OneCPU_bsp/system.h ../FreeRTOS_OneCPU_bsp/linker.h \
+ metal/cpu.h metal/processor/nios2/cpu.h metal/freertos/io.h \
  openAMP/lib/include/openamp/rsc_table_parser.h \
- openAMP/lib/include/openamp/remoteproc.h \
- Source/portable/GCC/NiosII/../../../../metal/mutex.h \
- metal/freertos/mutex.h \
- Source/portable/GCC/NiosII/../../../../metal/compiler/gcc/compiler.h
+ openAMP/lib/include/openamp/remoteproc.h metal/mutex.h \
+ metal/freertos/mutex.h
 
-Source/portable/GCC/NiosII/../../../../metal/metal_io.h:
+metal/metal_io.h:
 
 metal/metal_assert.h:
 
@@ -42,6 +44,22 @@ metal/freertos/sys.h:
 
 metal/freertos/nios2/sys.h:
 
+metal/irq.h:
+
+metal/freertos/irq.h:
+
+metal/freertos/nios2/common/sys.h:
+
+../FreeRTOS_OneCPU_bsp//HAL/inc/sys/alt_irq.h:
+
+../FreeRTOS_OneCPU_bsp//HAL/inc/nios2.h:
+
+../FreeRTOS_OneCPU_bsp//HAL/inc/alt_types.h:
+
+../FreeRTOS_OneCPU_bsp/system.h:
+
+../FreeRTOS_OneCPU_bsp/linker.h:
+
 metal/cpu.h:
 
 metal/processor/nios2/cpu.h:
@@ -52,8 +70,6 @@ openAMP/lib/include/openamp/rsc_table_parser.h:
 
 openAMP/lib/include/openamp/remoteproc.h:
 
-Source/portable/GCC/NiosII/../../../../metal/mutex.h:
+metal/mutex.h:
 
 metal/freertos/mutex.h:
-
-Source/portable/GCC/NiosII/../../../../metal/compiler/gcc/compiler.h:

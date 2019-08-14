@@ -62,7 +62,8 @@ module arm_one_nios (
 	sdram_dq,
 	sdram_dqm,
 	sdram_ras_n,
-	sdram_we_n);	
+	sdram_we_n,
+	to_master_external_connection_export);	
 
 	input		clk_clk;
 	output		hps_0_h2f_reset_reset_n;
@@ -127,4 +128,5 @@ module arm_one_nios (
 	output	[1:0]	sdram_dqm;
 	output		sdram_ras_n;
 	output		sdram_we_n;
+	input		to_master_external_connection_export;
 endmodule

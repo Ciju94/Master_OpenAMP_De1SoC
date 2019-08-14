@@ -50,9 +50,9 @@ module arm_one_nios_mm_interconnect_0_router_004_default_decode
                DEFAULT_DESTID = 1 
    )
   (output [102 - 100 : 0] default_destination_id,
-   output [6-1 : 0] default_wr_channel,
-   output [6-1 : 0] default_rd_channel,
-   output [6-1 : 0] default_src_channel
+   output [7-1 : 0] default_wr_channel,
+   output [7-1 : 0] default_rd_channel,
+   output [7-1 : 0] default_src_channel
   );
 
   assign default_destination_id = 
@@ -63,7 +63,7 @@ module arm_one_nios_mm_interconnect_0_router_004_default_decode
       assign default_src_channel = '0;
     end
     else begin : default_channel_assignment
-      assign default_src_channel = 6'b1 << DEFAULT_CHANNEL;
+      assign default_src_channel = 7'b1 << DEFAULT_CHANNEL;
     end
   endgenerate
 
@@ -73,8 +73,8 @@ module arm_one_nios_mm_interconnect_0_router_004_default_decode
       assign default_rd_channel = '0;
     end
     else begin : default_rw_channel_assignment
-      assign default_wr_channel = 6'b1 << DEFAULT_WR_CHANNEL;
-      assign default_rd_channel = 6'b1 << DEFAULT_RD_CHANNEL;
+      assign default_wr_channel = 7'b1 << DEFAULT_WR_CHANNEL;
+      assign default_rd_channel = 7'b1 << DEFAULT_RD_CHANNEL;
     end
   endgenerate
 
@@ -103,7 +103,7 @@ module arm_one_nios_mm_interconnect_0_router_004
     // -------------------
     output                          src_valid,
     output reg [127-1    : 0] src_data,
-    output reg [6-1 : 0] src_channel,
+    output reg [7-1 : 0] src_channel,
     output                          src_startofpacket,
     output                          src_endofpacket,
     input                           src_ready
@@ -119,7 +119,7 @@ module arm_one_nios_mm_interconnect_0_router_004
     localparam PKT_PROTECTION_H = 117;
     localparam PKT_PROTECTION_L = 115;
     localparam ST_DATA_W = 127;
-    localparam ST_CHANNEL_W = 6;
+    localparam ST_CHANNEL_W = 7;
     localparam DECODER_TYPE = 0;
 
     localparam PKT_TRANS_WRITE = 68;
@@ -165,7 +165,7 @@ module arm_one_nios_mm_interconnect_0_router_004
     assign src_startofpacket = sink_startofpacket;
     assign src_endofpacket   = sink_endofpacket;
     wire [PKT_DEST_ID_W-1:0] default_destid;
-    wire [6-1 : 0] default_src_channel;
+    wire [7-1 : 0] default_src_channel;
 
 
 
@@ -191,13 +191,13 @@ module arm_one_nios_mm_interconnect_0_router_004
 
     // ( 0x100000 .. 0x100010 )
     if ( {address[RG:PAD0],{PAD0{1'b0}}} == 21'h100000   ) begin
-            src_channel = 6'b10;
+            src_channel = 7'b10;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 1;
     end
 
     // ( 0x101000 .. 0x101008 )
     if ( {address[RG:PAD1],{PAD1{1'b0}}} == 21'h101000   ) begin
-            src_channel = 6'b01;
+            src_channel = 7'b01;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 2;
     end
 

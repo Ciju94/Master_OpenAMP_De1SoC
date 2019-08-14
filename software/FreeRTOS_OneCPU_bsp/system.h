@@ -4,7 +4,7 @@
  * Machine generated for CPU 'nios_cpu_1' in SOPC Builder design 'arm_one_nios'
  * SOPC Builder design path: ../../arm_one_nios.sopcinfo
  *
- * Generated: Sun Aug 04 14:19:12 CEST 2019
+ * Generated: Wed Aug 14 18:30:55 CEST 2019
  */
 
 /*
@@ -144,6 +144,7 @@
 #define __ALTERA_AVALON_JTAG_UART
 #define __ALTERA_AVALON_MUTEX
 #define __ALTERA_AVALON_NEW_SDRAM_CONTROLLER
+#define __ALTERA_AVALON_PIO
 #define __ALTERA_AVALON_TIMER
 #define __ALTERA_NIOS2_GEN2
 
@@ -294,5 +295,32 @@
 #define TIMER_0_TICKS_PER_SEC 1000
 #define TIMER_0_TIMEOUT_PULSE_OUTPUT 0
 #define TIMER_0_TYPE "altera_avalon_timer"
+
+
+/*
+ * to_master configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_to_master altera_avalon_pio
+#define TO_MASTER_BASE 0x0
+#define TO_MASTER_BIT_CLEARING_EDGE_REGISTER 0
+#define TO_MASTER_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define TO_MASTER_CAPTURE 0
+#define TO_MASTER_DATA_WIDTH 1
+#define TO_MASTER_DO_TEST_BENCH_WIRING 0
+#define TO_MASTER_DRIVEN_SIM_VALUE 0
+#define TO_MASTER_EDGE_TYPE "NONE"
+#define TO_MASTER_FREQ 50000000
+#define TO_MASTER_HAS_IN 1
+#define TO_MASTER_HAS_OUT 0
+#define TO_MASTER_HAS_TRI 0
+#define TO_MASTER_IRQ -1
+#define TO_MASTER_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define TO_MASTER_IRQ_TYPE "LEVEL"
+#define TO_MASTER_NAME "/dev/to_master"
+#define TO_MASTER_RESET_VALUE 0
+#define TO_MASTER_SPAN 16
+#define TO_MASTER_TYPE "altera_avalon_pio"
 
 #endif /* __SYSTEM_H_ */

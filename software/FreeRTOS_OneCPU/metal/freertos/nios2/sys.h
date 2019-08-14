@@ -5,19 +5,21 @@
  */
 
 /*
- * @file	freertos/zynq7/sys.h
- * @brief	freertos zynq7 system primitives for libmetal.
+ * @file	freertos/nios2/sys.h
+ * @brief	freertos nios2 system primitives for libmetal.
  */
 
 #ifndef __METAL_FREERTOS_SYS__H__
-#error "Include sys.h instead of freertos/sys.h"
+#error "Include freertos/sys.h instead of freertos/nios2/sys.h"
 #endif
 
-//#include <metal/system/@PROJECT_SYSTEM@/xlnx_common/sys.h>
-//#include "xscugic.h"
+#include <irq.h>
+#include <freertos/nios2/common/sys.h>
 
-#ifndef __METAL_FREERTOS_ZYNQ7_SYS__H__
-#define __METAL_FREERTOS_ZYNQ7_SYS__H__
+#include "sys/alt_irq.h"
+
+#ifndef __METAL_FREERTOS_NIOS_II_SYS__H__
+#define __METAL_FREERTOS_NIOS_II_SYS__H__
 
 #ifdef __cplusplus
 extern "C" {
@@ -25,16 +27,17 @@ extern "C" {
 
 #ifdef METAL_INTERNAL
 
-#define XLNX_MAXIRQS XSCUGIC_MAX_NUM_INTR_INPUTS
+#define NIOS_MAXIRQS 	NIOS2_NIRQ
+#define	IC_ID_IGNORE 	0
 
 static inline void sys_irq_enable(unsigned int vector)
 {
-        //XScuGic_EnableIntr(XPAR_SCUGIC_0_DIST_BASEADDR, vector);
+	alt_ic_irq_enable(IC_ID_IGNORE, (alt_u32)vector);
 }
 
 static inline void sys_irq_disable(unsigned int vector)
 {
-        //XScuGic_DisableIntr(XPAR_SCUGIC_0_DIST_BASEADDR, vector);
+	alt_ic_irq_disable(IC_ID_IGNORE, (alt_u32)vector);
 }
 
 #endif /* METAL_INTERNAL */
@@ -43,4 +46,4 @@ static inline void sys_irq_disable(unsigned int vector)
 }
 #endif
 
-#endif /* __METAL_FREERTOS_ZYNQ7_SYS__H__ */
+#endif /* __METAL_FREERTOS_NIOS_II_SYS__H__ */

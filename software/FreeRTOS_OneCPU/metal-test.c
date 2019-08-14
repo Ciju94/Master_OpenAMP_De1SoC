@@ -10,6 +10,7 @@
 #include <string.h>
 
 #include "metal-test.h"
+
 #include <compiler.h>
 #include <sys.h>
 #include <utilities.h>

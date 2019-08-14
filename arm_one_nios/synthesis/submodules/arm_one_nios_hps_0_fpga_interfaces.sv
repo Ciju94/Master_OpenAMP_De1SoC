@@ -92,6 +92,16 @@ module arm_one_nios_hps_0_fpga_interfaces(
  ,input wire [1 - 1 : 0 ] h2f_RLAST
  ,input wire [1 - 1 : 0 ] h2f_RVALID
  ,output wire [1 - 1 : 0 ] h2f_RREADY
+// f2h_irq0
+ ,input wire [32 - 1 : 0 ] f2h_irq_p0
+// f2h_irq1
+ ,input wire [32 - 1 : 0 ] f2h_irq_p1
+// h2f_gpio0_interrupt
+ ,output wire [1 - 1 : 0 ] h2f_gpio0_irq
+// h2f_gpio1_interrupt
+ ,output wire [1 - 1 : 0 ] h2f_gpio1_irq
+// h2f_gpio2_interrupt
+ ,output wire [1 - 1 : 0 ] h2f_gpio2_irq
 );
 
 
@@ -414,6 +424,23 @@ cyclonev_hps_interface_fpga2sdram f2sdram(
   })
 ,.cfg_cport_wfifo_map({
     18'b000000000000000000 // 17:0
+  })
+);
+
+
+cyclonev_hps_interface_interrupts interrupts(
+ .h2f_gpio1_irq({
+    h2f_gpio1_irq[0:0] // 0:0
+  })
+,.irq({
+    f2h_irq_p1[31:0] // 63:32
+   ,f2h_irq_p0[31:0] // 31:0
+  })
+,.h2f_gpio0_irq({
+    h2f_gpio0_irq[0:0] // 0:0
+  })
+,.h2f_gpio2_irq({
+    h2f_gpio2_irq[0:0] // 0:0
   })
 );
 

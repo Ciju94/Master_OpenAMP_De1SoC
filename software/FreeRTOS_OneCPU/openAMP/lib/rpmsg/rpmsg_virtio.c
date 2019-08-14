@@ -7,9 +7,9 @@
  * SPDX-License-Identifier: BSD-3-Clause
  */
 
-#include <../../../../metal/alloc.h>
-#include <../../../../metal/sleep.h>
-#include <../../../../metal/utilities.h>
+#include <alloc.h>
+#include <sleep.h>
+#include <utilities.h>
 
 #include <lib/include/openamp/rpmsg_virtio.h>
 #include <lib/include/openamp/virtqueue.h>

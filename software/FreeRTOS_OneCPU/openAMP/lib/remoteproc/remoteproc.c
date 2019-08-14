@@ -6,9 +6,9 @@
  * SPDX-License-Identifier: BSD-3-Clause
  */
 
-#include <../../../../metal/alloc.h>
-#include <../../../../metal/log.h>
-#include <../../../../metal/utilities.h>
+#include <alloc.h>
+#include <log.h>
+#include <utilities.h>
 
 #include <lib/include/openamp/elf_loader.h>
 #include <lib/include/openamp/remoteproc.h>
