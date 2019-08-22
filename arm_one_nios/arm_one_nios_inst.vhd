@@ -1,7 +1,6 @@
 	component arm_one_nios is
 		port (
 			clk_clk                              : in    std_logic                     := 'X';             -- clk
-			hps_0_h2f_reset_reset_n              : out   std_logic;                                        -- reset_n
 			hps_io_hps_io_emac1_inst_TX_CLK      : out   std_logic;                                        -- hps_io_emac1_inst_TX_CLK
 			hps_io_hps_io_emac1_inst_TXD0        : out   std_logic;                                        -- hps_io_emac1_inst_TXD0
 			hps_io_hps_io_emac1_inst_TXD1        : out   std_logic;                                        -- hps_io_emac1_inst_TXD1
@@ -63,14 +62,14 @@
 			sdram_dqm                            : out   std_logic_vector(1 downto 0);                     -- dqm
 			sdram_ras_n                          : out   std_logic;                                        -- ras_n
 			sdram_we_n                           : out   std_logic;                                        -- we_n
-			to_master_external_connection_export : in    std_logic                     := 'X'              -- export
+			to_master_external_connection_export : in    std_logic                     := 'X';             -- export
+			sdram_clk_clk                        : out   std_logic                                         -- clk
 		);
 	end component arm_one_nios;
 
 	u0 : component arm_one_nios
 		port map (
 			clk_clk                              => CONNECTED_TO_clk_clk,                              --                           clk.clk
-			hps_0_h2f_reset_reset_n              => CONNECTED_TO_hps_0_h2f_reset_reset_n,              --               hps_0_h2f_reset.reset_n
 			hps_io_hps_io_emac1_inst_TX_CLK      => CONNECTED_TO_hps_io_hps_io_emac1_inst_TX_CLK,      --                        hps_io.hps_io_emac1_inst_TX_CLK
 			hps_io_hps_io_emac1_inst_TXD0        => CONNECTED_TO_hps_io_hps_io_emac1_inst_TXD0,        --                              .hps_io_emac1_inst_TXD0
 			hps_io_hps_io_emac1_inst_TXD1        => CONNECTED_TO_hps_io_hps_io_emac1_inst_TXD1,        --                              .hps_io_emac1_inst_TXD1
@@ -132,6 +131,7 @@
 			sdram_dqm                            => CONNECTED_TO_sdram_dqm,                            --                              .dqm
 			sdram_ras_n                          => CONNECTED_TO_sdram_ras_n,                          --                              .ras_n
 			sdram_we_n                           => CONNECTED_TO_sdram_we_n,                           --                              .we_n
-			to_master_external_connection_export => CONNECTED_TO_to_master_external_connection_export  -- to_master_external_connection.export
+			to_master_external_connection_export => CONNECTED_TO_to_master_external_connection_export, -- to_master_external_connection.export
+			sdram_clk_clk                        => CONNECTED_TO_sdram_clk_clk                         --                     sdram_clk.clk
 		);
 

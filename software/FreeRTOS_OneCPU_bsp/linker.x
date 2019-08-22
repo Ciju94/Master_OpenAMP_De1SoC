@@ -4,7 +4,7 @@
  * Machine generated for CPU 'nios_cpu_1' in SOPC Builder design 'arm_one_nios'
  * SOPC Builder design path: ../../arm_one_nios.sopcinfo
  *
- * Generated: Wed Aug 14 18:54:56 CEST 2019
+ * Generated: Sat Aug 17 10:19:47 CEST 2019
  */
 
 /*
@@ -218,6 +218,11 @@ SECTIONS
         . = ALIGN(4);
         PROVIDE (__ram_rodata_end = ABSOLUTE(.));
     } > sdram
+
+	.resource_table 0x01800000 : {
+		. = ALIGN(4);
+		*(.resource_table)
+	} > sdram
 
     PROVIDE (__flash_rodata_start = LOADADDR(.rodata));
 

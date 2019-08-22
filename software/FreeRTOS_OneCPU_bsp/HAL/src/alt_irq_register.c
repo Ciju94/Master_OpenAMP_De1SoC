@@ -94,7 +94,7 @@ int alt_irq_register (alt_u32 id,
 
     rc = (handler) ? alt_irq_enable (id): alt_irq_disable (id);
 
-    //alt_irq_enable_all(status);
+    alt_irq_enable_all(status);
   }
   return rc; 
 }

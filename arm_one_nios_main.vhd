@@ -14,6 +14,8 @@ entity arm_one_nios_main is
 		
 		LEDR							: out std_logic_vector(9 downto 0);
 		
+		SDRAM_CLK					: out std_logic;
+			
 		SDRAM_ADDR					: out std_logic_vector(10 downto 0);
 		SDRAM_BA						: out std_logic_vector(1 downto 0);
 		SDRAM_CAS_N					: out std_logic;
@@ -77,8 +79,6 @@ architecture main of arm_one_nios_main is
 			clk_clk										: in std_logic;
 			reset_reset_n								: in std_logic;
 			
-			hps_0_h2f_reset_reset_n					: out std_logic;
-			
 			hps_io_hps_io_emac1_inst_TX_CLK		: out std_logic;
 			hps_io_hps_io_emac1_inst_TX_CTL		: out std_logic;
 			hps_io_hps_io_emac1_inst_TXD0			: out std_logic;
@@ -137,6 +137,8 @@ architecture main of arm_one_nios_main is
 			
 			memory_oct_rzqin							: in std_logic;
 			
+			sdram_clk_clk              			: out std_logic;
+					
 			sdram_addr									: out std_logic_vector(10 downto 0);
 			sdram_ba										: out std_logic_vector(1 downto 0);
 			sdram_cas_n									: out std_logic;
@@ -150,8 +152,7 @@ architecture main of arm_one_nios_main is
 			to_master_external_connection_export : in std_logic
 		);
 	end component arm_one_nios;
-	
-signal HPS_H2F_RST				: std_logic;
+
 signal TO_MASTER_EXT_CON		: std_logic;
 
 begin
@@ -160,8 +161,6 @@ begin
 		port map (
 			clk_clk                         => CLOCK_50,
 			reset_reset_n                   => '1',
-			
-			hps_0_h2f_reset_reset_n         => HPS_H2F_RST, 
 
 			hps_io_hps_io_emac1_inst_TX_CLK => HPS_ENET_TX_CLK,
 			hps_io_hps_io_emac1_inst_TX_CTL => HPS_ENET_TX_EN,
@@ -220,6 +219,8 @@ begin
 			memory_mem_dm                   => HPS_DDR3_DM,
 			memory_oct_rzqin                => HPS_DDR3_RZQ,
 
+			sdram_clk_clk		              => SDRAM_CLK,
+					
 			sdram_addr                      => SDRAM_ADDR,
 			sdram_ba                        => SDRAM_BA,
 			sdram_cas_n                     => SDRAM_CAS_N,

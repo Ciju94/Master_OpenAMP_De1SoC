@@ -4,7 +4,7 @@
  * Machine generated for CPU 'nios_cpu_1' in SOPC Builder design 'arm_one_nios'
  * SOPC Builder design path: ../../arm_one_nios.sopcinfo
  *
- * Generated: Wed Aug 14 18:54:56 CEST 2019
+ * Generated: Wed Aug 21 16:51:48 CEST 2019
  */
 
 /*

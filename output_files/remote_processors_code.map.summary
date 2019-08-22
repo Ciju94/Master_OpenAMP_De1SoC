@@ -1,0 +1,17 @@
+Analysis & Synthesis Status : Successful - Wed Aug 21 16:42:24 2019
+Quartus Prime Version : 17.0.0 Build 595 04/25/2017 SJ Lite Edition
+Revision Name : remote_processors_code
+Top-level Entity Name : arm_one_nios
+Family : Cyclone V
+Logic utilization (in ALMs) : N/A
+Total registers : 4014
+Total pins : 156
+Total virtual pins : 0
+Total block memory bits : 47,360
+Total DSP Blocks : 3
+Total HSSI RX PCSs : 0
+Total HSSI PMA RX Deserializers : 0
+Total HSSI TX PCSs : 0
+Total HSSI PMA TX Serializers : 0
+Total PLLs : 1
+Total DLLs : 1

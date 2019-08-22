@@ -1,6 +1,5 @@
 	arm_one_nios u0 (
 		.clk_clk                              (<connected-to-clk_clk>),                              //                           clk.clk
-		.hps_0_h2f_reset_reset_n              (<connected-to-hps_0_h2f_reset_reset_n>),              //               hps_0_h2f_reset.reset_n
 		.hps_io_hps_io_emac1_inst_TX_CLK      (<connected-to-hps_io_hps_io_emac1_inst_TX_CLK>),      //                        hps_io.hps_io_emac1_inst_TX_CLK
 		.hps_io_hps_io_emac1_inst_TXD0        (<connected-to-hps_io_hps_io_emac1_inst_TXD0>),        //                              .hps_io_emac1_inst_TXD0
 		.hps_io_hps_io_emac1_inst_TXD1        (<connected-to-hps_io_hps_io_emac1_inst_TXD1>),        //                              .hps_io_emac1_inst_TXD1
@@ -62,6 +61,7 @@
 		.sdram_dqm                            (<connected-to-sdram_dqm>),                            //                              .dqm
 		.sdram_ras_n                          (<connected-to-sdram_ras_n>),                          //                              .ras_n
 		.sdram_we_n                           (<connected-to-sdram_we_n>),                           //                              .we_n
-		.to_master_external_connection_export (<connected-to-to_master_external_connection_export>)  // to_master_external_connection.export
+		.to_master_external_connection_export (<connected-to-to_master_external_connection_export>), // to_master_external_connection.export
+		.sdram_clk_clk                        (<connected-to-sdram_clk_clk>)                         //                     sdram_clk.clk
 	);
 

@@ -142,13 +142,18 @@ ACDS_VERSION := 17.0
 ELF := FreeRTOS_OneCPU.elf
 
 # Paths to C, C++, and assembly source files.
+C_SRCS += Source/croutine.c
+C_SRCS += Source/event_groups.c
+C_SRCS += Source/list.c
+C_SRCS += Source/portable/GCC/NiosII/port.c
+C_SRCS += Source/portable/MemMang/heap_2.c
+C_SRCS += Source/queue.c
+C_SRCS += Source/stream_buffer.c
+C_SRCS += Source/tasks.c
+C_SRCS += Source/timers.c
 C_SRCS += atomic_mutex.c
 C_SRCS += helper.c
 C_SRCS += metal-test.c
-C_SRCS += platform_info.c
-C_SRCS += rpmsg-echo.c
-C_SRCS += rsc_table.c
-C_SRCS += zynqmp_r5_a53_rproc.c
 C_SRCS += metal/device.c
 C_SRCS += metal/dma.c
 C_SRCS += metal/freertos/alloc.c
@@ -180,15 +185,10 @@ C_SRCS += openAMP/lib/rpmsg/rpmsg.c
 C_SRCS += openAMP/lib/rpmsg/rpmsg_virtio.c
 C_SRCS += openAMP/lib/virtio/virtio.c
 C_SRCS += openAMP/lib/virtio/virtqueue.c
-C_SRCS += Source/croutine.c
-C_SRCS += Source/event_groups.c
-C_SRCS += Source/list.c
-C_SRCS += Source/portable/GCC/NiosII/port.c
-C_SRCS += Source/portable/MemMang/heap_2.c
-C_SRCS += Source/queue.c
-C_SRCS += Source/stream_buffer.c
-C_SRCS += Source/tasks.c
-C_SRCS += Source/timers.c
+C_SRCS += platform_info.c
+C_SRCS += rpmsg-echo.c
+C_SRCS += rsc_table.c
+C_SRCS += zynqmp_r5_a53_rproc.c
 CXX_SRCS :=
 ASM_SRCS := Source/portable/GCC/NiosII/port_asm.S
 
@@ -226,13 +226,13 @@ SYS_LIB :=
 BSP_ROOT_DIR := ../FreeRTOS_OneCPU_bsp/
 
 # List of application specific include directories, library directories and library names
+APP_INCLUDE_DIRS += ./
 APP_INCLUDE_DIRS += Source
+APP_INCLUDE_DIRS += Source/include
 APP_INCLUDE_DIRS += Source/portable/GCC/NiosII
 APP_INCLUDE_DIRS += Source/portable/MemMang
-APP_INCLUDE_DIRS += Source/include
-APP_INCLUDE_DIRS += openAMP
 APP_INCLUDE_DIRS += metal
-APP_INCLUDE_DIRS += ./
+APP_INCLUDE_DIRS += openAMP
 APP_LIBRARY_DIRS :=
 APP_LIBRARY_NAMES :=
 

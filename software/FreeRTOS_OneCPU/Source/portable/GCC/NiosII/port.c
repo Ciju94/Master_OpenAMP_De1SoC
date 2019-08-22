@@ -35,6 +35,7 @@
 
 /* Altera includes. */
 #include "sys/alt_irq.h"
+#include "priv/alt_legacy_irq.h"
 #include "altera_avalon_timer_regs.h"
 #include "priv/alt_irq_table.h"
 
@@ -174,7 +175,12 @@ void vPortSysTickHandler( void * context, alt_u32 id )
  * kernel has its scheduler started so that contexts are saved and switched 
  * correctly.
  */
-/*int alt_irq_register( alt_u32 id, void* context, void (*handler)(void*, alt_u32) )
+
+#ifndef ALT_ENHANCED_INTERRUPT_API_PRESENT
+int alt_irq_register( alt_u32 id, void* context, void (*handler)(void*, alt_u32) )
+#else
+int alt_irq_register( alt_u32 id, void* context, alt_isr_func handler )
+#endif
 {
 	int rc = -EINVAL;  
 	alt_irq_context status;
@@ -187,10 +193,52 @@ void vPortSysTickHandler( void * context, alt_u32 id )
 		alt_irq[id].context = context;
 	
 		rc = (handler) ? alt_irq_enable (id): alt_irq_disable (id);
-	
+
+		/* alt_irq_enable_all(status); This line is removed to prevent the interrupt from being immediately enabled. */
 	}
     
 	return rc; 
-}*/
+}
+
+/** @Function Description:  This function registers an interrupt handler.
+ * If the function is succesful, then the requested interrupt will be enabled
+ * upon return. Registering a NULL handler will disable the interrupt.
+ *
+ * @API Type:              External
+ * @param ic_id            Interrupt controller ID
+ * @param irq              IRQ ID number
+ * @param isr              Pointer to interrupt service routine
+ * @param isr_context      Opaque pointer passed to ISR
+ * @param flags
+ * @return                 0 if successful, else error (-1)
+ */
+int alt_iic_isr_register(alt_u32 ic_id, alt_u32 irq, alt_isr_func isr,
+ void *isr_context, void *flags)
+{
+ int rc = -EINVAL;
+ int id = irq;             /* IRQ interpreted as the interrupt ID. */
+ alt_irq_context status;
+
+ if (id < ALT_NIRQ)
+ {
+   /*
+    * interrupts are disabled while the handler tables are updated to ensure
+    * that an interrupt doesn't occur while the tables are in an inconsistant
+    * state.
+    */
+
+   status = alt_irq_disable_all();
+
+   alt_irq[id].handler = isr;
+   alt_irq[id].context = isr_context;
+
+   rc = (isr) ? alt_ic_irq_enable(ic_id, id) : alt_ic_irq_disable(ic_id, id);
+
+ //  alt_irq_enable_all(status);
+ }
+
+ return rc;
+}
+
 /*-----------------------------------------------------------*/
 

@@ -1,0 +1,20 @@
+Fitter Status : Successful - Wed Aug 21 16:44:27 2019
+Quartus Prime Version : 17.0.0 Build 595 04/25/2017 SJ Lite Edition
+Revision Name : remote_processors_code
+Top-level Entity Name : arm_one_nios
+Family : Cyclone V
+Device : 5CSEMA5F31C6
+Timing Models : Final
+Logic utilization (in ALMs) : 2,766 / 32,070 ( 9 % )
+Total registers : 4170
+Total pins : 156 / 457 ( 34 % )
+Total virtual pins : 0
+Total block memory bits : 47,360 / 4,065,280 ( 1 % )
+Total RAM Blocks : 14 / 397 ( 4 % )
+Total DSP Blocks : 3 / 87 ( 3 % )
+Total HSSI RX PCSs : 0
+Total HSSI PMA RX Deserializers : 0
+Total HSSI TX PCSs : 0
+Total HSSI PMA TX Serializers : 0
+Total PLLs : 1 / 6 ( 17 % )
+Total DLLs : 1 / 4 ( 25 % )

@@ -1,7 +1,6 @@
 	component arm_one_nios is
 		port (
 			clk_clk                              : in    std_logic                     := 'X';             -- clk
-			hps_0_h2f_reset_reset_n              : out   std_logic;                                        -- reset_n
 			hps_io_hps_io_emac1_inst_TX_CLK      : out   std_logic;                                        -- hps_io_emac1_inst_TX_CLK
 			hps_io_hps_io_emac1_inst_TXD0        : out   std_logic;                                        -- hps_io_emac1_inst_TXD0
 			hps_io_hps_io_emac1_inst_TXD1        : out   std_logic;                                        -- hps_io_emac1_inst_TXD1
@@ -63,6 +62,7 @@
 			sdram_dqm                            : out   std_logic_vector(1 downto 0);                     -- dqm
 			sdram_ras_n                          : out   std_logic;                                        -- ras_n
 			sdram_we_n                           : out   std_logic;                                        -- we_n
+			sdram_clk_clk                        : out   std_logic;                                        -- clk
 			to_master_external_connection_export : in    std_logic                     := 'X'              -- export
 		);
 	end component arm_one_nios;

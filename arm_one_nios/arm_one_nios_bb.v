@@ -1,7 +1,6 @@
 
 module arm_one_nios (
 	clk_clk,
-	hps_0_h2f_reset_reset_n,
 	hps_io_hps_io_emac1_inst_TX_CLK,
 	hps_io_hps_io_emac1_inst_TXD0,
 	hps_io_hps_io_emac1_inst_TXD1,
@@ -63,10 +62,10 @@ module arm_one_nios (
 	sdram_dqm,
 	sdram_ras_n,
 	sdram_we_n,
-	to_master_external_connection_export);	
+	to_master_external_connection_export,
+	sdram_clk_clk);	
 
 	input		clk_clk;
-	output		hps_0_h2f_reset_reset_n;
 	output		hps_io_hps_io_emac1_inst_TX_CLK;
 	output		hps_io_hps_io_emac1_inst_TXD0;
 	output		hps_io_hps_io_emac1_inst_TXD1;
@@ -129,4 +128,5 @@ module arm_one_nios (
 	output		sdram_ras_n;
 	output		sdram_we_n;
 	input		to_master_external_connection_export;
+	output		sdram_clk_clk;
 endmodule

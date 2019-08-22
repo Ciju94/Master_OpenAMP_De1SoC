@@ -4,6 +4,7 @@ obj/default/Source/portable/GCC/NiosII/port.o: \
  ../FreeRTOS_OneCPU_bsp//HAL/inc/nios2.h \
  ../FreeRTOS_OneCPU_bsp//HAL/inc/alt_types.h \
  ../FreeRTOS_OneCPU_bsp/system.h ../FreeRTOS_OneCPU_bsp/linker.h \
+ ../FreeRTOS_OneCPU_bsp//HAL/inc/priv/alt_legacy_irq.h \
  ../FreeRTOS_OneCPU_bsp//drivers/inc/altera_avalon_timer_regs.h \
  ../FreeRTOS_OneCPU_bsp//HAL/inc/io.h \
  ../FreeRTOS_OneCPU_bsp//HAL/inc/alt_types.h \
@@ -23,6 +24,8 @@ obj/default/Source/portable/GCC/NiosII/port.o: \
 ../FreeRTOS_OneCPU_bsp/system.h:
 
 ../FreeRTOS_OneCPU_bsp/linker.h:
+
+../FreeRTOS_OneCPU_bsp//HAL/inc/priv/alt_legacy_irq.h:
 
 ../FreeRTOS_OneCPU_bsp//drivers/inc/altera_avalon_timer_regs.h:
 
